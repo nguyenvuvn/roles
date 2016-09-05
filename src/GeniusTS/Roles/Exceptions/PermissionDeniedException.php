@@ -1,9 +1,11 @@
 <?php
 
-namespace Bican\Roles\Exceptions;
+namespace GeniusTS\Roles\Exceptions;
+
 
 class PermissionDeniedException extends AccessDeniedException
 {
+
     /**
      * Create a new permission denied exception instance.
      *

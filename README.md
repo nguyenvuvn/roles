@@ -64,7 +64,7 @@ Add the package to your application service providers in `config/app.php` file.
     /**
      * Third Party Service Providers...
      */
-    Bican\Roles\RolesServiceProvider::class,
+    GeniusTS\Roles\RolesServiceProvider::class,
 
 ],
 ```
@@ -73,8 +73,8 @@ Add the package to your application service providers in `config/app.php` file.
 
 Publish the package config file and migrations to your application. Run these commands inside your terminal.
 
-    php artisan vendor:publish --provider="Bican\Roles\RolesServiceProvider" --tag=config
-    php artisan vendor:publish --provider="Bican\Roles\RolesServiceProvider" --tag=migrations
+    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=config
+    php artisan vendor:publish --provider="GeniusTS\Roles\RolesServiceProvider" --tag=migrations
 
 And also run migrations.
 
@@ -87,8 +87,8 @@ And also run migrations.
 Include `HasRoleAndPermission` trait and also implement `HasRoleAndPermission` contract inside your `User` model.
 
 ```php
-use Bican\Roles\Traits\HasRoleAndPermission;
-use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use GeniusTS\Roles\Traits\HasRoleAndPermission;
+use GeniusTS\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, HasRoleAndPermissionContract
 {
@@ -102,7 +102,7 @@ And that's it!
 ### Creating Roles
 
 ```php
-use Bican\Roles\Models\Role;
+use GeniusTS\Roles\Models\Role;
 
 $adminRole = Role::create([
     'name' => 'Admin',
@@ -197,7 +197,7 @@ if ($user->level() > 4) {
 It's very simple thanks to `Permission` model.
 
 ```php
-use Bican\Roles\Models\Permission;
+use GeniusTS\Roles\Models\Permission;
 
 $createUsersPermission = Permission::create([
     'name' => 'Create users',
@@ -217,7 +217,7 @@ You can attach permissions to a role or directly to a specific user (and of cour
 
 ```php
 use App\User;
-use Bican\Roles\Models\Role;
+use GeniusTS\Roles\Models\Role;
 
 $role = Role::find($roleId);
 $role->attachPermission($createUsersPermission); // permission attached to a role
@@ -264,7 +264,7 @@ Let's say you have an article and you want to edit it. This article belongs to a
 
 ```php
 use App\Article;
-use Bican\Roles\Models\Permission;
+use GeniusTS\Roles\Models\Permission;
 
 $editArticlesPermission = Permission::create([
     'name' => 'Edit articles',
@@ -331,9 +331,9 @@ protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
     'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-    'role' => \Bican\Roles\Middleware\VerifyRole::class,
-    'permission' => \Bican\Roles\Middleware\VerifyPermission::class,
-    'level' => \Bican\Roles\Middleware\VerifyLevel::class,
+    'role' => \GeniusTS\Roles\Middleware\VerifyRole::class,
+    'permission' => \GeniusTS\Roles\Middleware\VerifyPermission::class,
+    'level' => \GeniusTS\Roles\Middleware\VerifyLevel::class,
 ];
 ```
 
@@ -359,7 +359,7 @@ $router->get('/example', [
 ]);
 ```
 
-It throws `\Bican\Roles\Exceptions\RoleDeniedException`, `\Bican\Roles\Exceptions\PermissionDeniedException` or `\Bican\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
+It throws `\GeniusTS\Roles\Exceptions\RoleDeniedException`, `\GeniusTS\Roles\Exceptions\PermissionDeniedException` or `\GeniusTS\Roles\Exceptions\LevelDeniedException` exceptions if it goes wrong.
 
 You can catch these exceptions inside `app/Exceptions/Handler.php` file and do whatever you want.
 
@@ -373,7 +373,7 @@ You can catch these exceptions inside `app/Exceptions/Handler.php` file and do w
  */
 public function render($request, Exception $e)
 {
-    if ($e instanceof \Bican\Roles\Exceptions\RoleDeniedException) {
+    if ($e instanceof \GeniusTS\Roles\Exceptions\RoleDeniedException) {
         // you can for example flash message, redirect...
         return redirect()->back();
     }

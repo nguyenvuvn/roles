@@ -1,11 +1,13 @@
 <?php
 
-namespace Bican\Roles\Contracts;
+namespace GeniusTS\Roles\Contracts;
+
 
 use Illuminate\Database\Eloquent\Model;
 
 interface HasRoleAndPermission
 {
+
     /**
      * User belongs to many roles.
      *
@@ -24,7 +26,8 @@ interface HasRoleAndPermission
      * Check if the user has a role or roles.
      *
      * @param int|string|array $role
-     * @param bool $all
+     * @param bool             $all
+     *
      * @return bool
      */
     public function is($role, $all = false);
@@ -33,6 +36,7 @@ interface HasRoleAndPermission
      * Check if the user has all roles.
      *
      * @param int|string|array $role
+     *
      * @return bool
      */
     public function isAll($role);
@@ -41,6 +45,7 @@ interface HasRoleAndPermission
      * Check if the user has at least one role.
      *
      * @param int|string|array $role
+     *
      * @return bool
      */
     public function isOne($role);
@@ -49,6 +54,7 @@ interface HasRoleAndPermission
      * Check if the user has role.
      *
      * @param int|string $role
+     *
      * @return bool
      */
     public function hasRole($role);
@@ -56,7 +62,8 @@ interface HasRoleAndPermission
     /**
      * Attach role to a user.
      *
-     * @param int|\Bican\Roles\Models\Role $role
+     * @param int|\GeniusTS\Roles\Models\Role $role
+     *
      * @return null|bool
      */
     public function attachRole($role);
@@ -64,7 +71,8 @@ interface HasRoleAndPermission
     /**
      * Detach role from a user.
      *
-     * @param int|\Bican\Roles\Models\Role $role
+     * @param int|\GeniusTS\Roles\Models\Role $role
+     *
      * @return int
      */
     public function detachRole($role);
@@ -108,7 +116,8 @@ interface HasRoleAndPermission
      * Check if the user has a permission or permissions.
      *
      * @param int|string|array $permission
-     * @param bool $all
+     * @param bool             $all
+     *
      * @return bool
      */
     public function can($permission, $all = false);
@@ -117,6 +126,7 @@ interface HasRoleAndPermission
      * Check if the user has all permissions.
      *
      * @param int|string|array $permission
+     *
      * @return bool
      */
     public function canAll($permission);
@@ -125,6 +135,7 @@ interface HasRoleAndPermission
      * Check if the user has at least one permission.
      *
      * @param int|string|array $permission
+     *
      * @return bool
      */
     public function canOne($permission);
@@ -133,6 +144,7 @@ interface HasRoleAndPermission
      * Check if the user has a permission.
      *
      * @param int|string $permission
+     *
      * @return bool
      */
     public function hasPermission($permission);
@@ -140,10 +152,11 @@ interface HasRoleAndPermission
     /**
      * Check if the user is allowed to manipulate with entity.
      *
-     * @param string $providedPermission
+     * @param string                              $providedPermission
      * @param \Illuminate\Database\Eloquent\Model $entity
-     * @param bool $owner
-     * @param string $ownerColumn
+     * @param bool                                $owner
+     * @param string                              $ownerColumn
+     *
      * @return bool
      */
     public function allowed($providedPermission, Model $entity, $owner = true, $ownerColumn = 'user_id');
@@ -151,7 +164,8 @@ interface HasRoleAndPermission
     /**
      * Attach permission to a user.
      *
-     * @param int|\Bican\Roles\Models\Permission $permission
+     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     *
      * @return null|bool
      */
     public function attachPermission($permission);
@@ -159,7 +173,8 @@ interface HasRoleAndPermission
     /**
      * Detach permission from a user.
      *
-     * @param int|\Bican\Roles\Models\Permission $permission
+     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     *
      * @return int
      */
     public function detachPermission($permission);

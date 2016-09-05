@@ -1,9 +1,11 @@
 <?php
 
-namespace Bican\Roles\Traits;
+namespace GeniusTS\Roles\Traits;
+
 
 trait PermissionHasRelations
 {
+
     /**
      * Permission belongs to many roles.
      *

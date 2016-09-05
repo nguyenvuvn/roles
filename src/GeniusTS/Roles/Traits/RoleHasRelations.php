@@ -1,9 +1,11 @@
 <?php
 
-namespace Bican\Roles\Traits;
+namespace GeniusTS\Roles\Traits;
+
 
 trait RoleHasRelations
 {
+
     /**
      * Role belongs to many permissions.
      *
@@ -27,7 +29,8 @@ trait RoleHasRelations
     /**
      * Attach permission to a role.
      *
-     * @param int|\Bican\Roles\Models\Permission $permission
+     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     *
      * @return int|bool
      */
     public function attachPermission($permission)
@@ -38,7 +41,8 @@ trait RoleHasRelations
     /**
      * Detach permission from a role.
      *
-     * @param int|\Bican\Roles\Models\Permission $permission
+     * @param int|\GeniusTS\Roles\Models\Permission $permission
+     *
      * @return int
      */
     public function detachPermission($permission)

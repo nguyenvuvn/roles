@@ -1,14 +1,16 @@
 <?php
 
-namespace Bican\Roles\Models;
+namespace GeniusTS\Roles\Models;
 
-use Bican\Roles\Traits\Slugable;
+
+use GeniusTS\Roles\Traits\Slugable;
 use Illuminate\Database\Eloquent\Model;
-use Bican\Roles\Traits\PermissionHasRelations;
-use Bican\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
+use GeniusTS\Roles\Traits\PermissionHasRelations;
+use GeniusTS\Roles\Contracts\PermissionHasRelations as PermissionHasRelationsContract;
 
 class Permission extends Model implements PermissionHasRelationsContract
 {
+
     use Slugable, PermissionHasRelations;
 
     /**
@@ -22,13 +24,15 @@ class Permission extends Model implements PermissionHasRelationsContract
      * Create a new model instance.
      *
      * @param array $attributes
+     *
      * @return void
      */
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 
-        if ($connection = config('roles.connection')) {
+        if ($connection = config('roles.connection'))
+        {
             $this->connection = $connection;
         }
     }

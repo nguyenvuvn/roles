@@ -1,15 +1,18 @@
 <?php
 
-namespace Bican\Roles\Traits;
+namespace GeniusTS\Roles\Traits;
+
 
 use Illuminate\Support\Str;
 
 trait Slugable
 {
+
     /**
      * Set slug attribute.
      *
      * @param string $value
+     *
      * @return void
      */
     public function setSlugAttribute($value)

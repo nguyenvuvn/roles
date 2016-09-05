@@ -1,9 +1,11 @@
 <?php
 
-namespace Bican\Roles\Contracts;
+namespace GeniusTS\Roles\Contracts;
+
 
 interface PermissionHasRelations
 {
+
     /**
      * Permission belongs to many roles.
      *
