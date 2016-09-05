@@ -14,8 +14,8 @@
         "illuminate/support": "~5.3"
     },
     "autoload": {
-        "psr-0": {
-            "GeniusTS\\Roles": "src/"
+        "psr-4": {
+            "GeniusTS\\Roles\\": "src/"
         }
     }
 }
