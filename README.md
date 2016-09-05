@@ -1,6 +1,8 @@
-# Roles And Permissions For Laravel 5
+# Roles And Permissions For Laravel 5.3
 
-Powerful package for handling roles and permissions in Laravel 5 (5.1 and also 5.0).
+It is a fork from [bican/roles](https://github.com/romanbican/roles) package,  
+I made some changes to make it work with laravel 5.3
+
 
 - [Installation](#installation)
     - [Composer](#composer)
@@ -35,13 +37,15 @@ Pull this package in through Composer (file `composer.json`).
 {
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
-        "bican/roles": "2.1.*"
+        "laravel/framework": "~5.3.0",
+        "geniusts/roles": "^3.0.1"
     }
 }
 ```
 
 > If you are still using Laravel 5.0, you must pull in version `1.7.*`.
+
+> and for Laravel 5.2, you must pull in version `2.1.*`.
 
 Run this command inside your terminal.
 
@@ -79,6 +83,10 @@ Publish the package config file and migrations to your application. Run these co
 And also run migrations.
 
     php artisan migrate
+
+> The migrations publishing only for earlier than laravel 5.3,  
+> for laravel 5.3 you must only run the Artisan `migrate` command
+
 
 > This uses the default users table which is in Laravel. You should already have the migration file for the users table available and migrated.
 
@@ -141,7 +149,7 @@ $user->detachAllRoles(); // in case you want to detach all roles
 You can now check if the user has required role.
 
 ```php
-if ($user->is('admin')) { // you can pass an id or slug
+if ($user->isRole('admin')) { // you can pass an id or slug
     // or alternatively $user->hasRole('admin')
 }
 ```
@@ -157,20 +165,20 @@ if ($user->isAdmin()) {
 And of course, there is a way to check for multiple roles:
 
 ```php
-if ($user->is('admin|moderator')) { 
+if ($user->isRole('admin|moderator')) { 
     /*
     | Or alternatively:
-    | $user->is('admin, moderator'), $user->is(['admin', 'moderator']),
+    | $user->isRole('admin, moderator'), $user->isRole(['admin', 'moderator']),
     | $user->isOne('admin|moderator'), $user->isOne('admin, moderator'), $user->isOne(['admin', 'moderator'])
     */
 
     // if user has at least one role
 }
 
-if ($user->is('admin|moderator', true)) {
+if ($user->isRole('admin|moderator', true)) {
     /*
     | Or alternatively:
-    | $user->is('admin, moderator', true), $user->is(['admin', 'moderator'], true),
+    | $user->isRole('admin, moderator', true), $user->isRole(['admin', 'moderator'], true),
     | $user->isAll('admin|moderator'), $user->isAll('admin, moderator'), $user->isAll(['admin', 'moderator'])
     */
 
@@ -385,10 +393,6 @@ public function render($request, Exception $e)
 ## Config File
 
 You can change connection for models, slug separator, models path and there is also a handy pretend feature. Have a look at config file for more information.
-
-## More Information
-
-For more information, please have a look at [HasRoleAndPermission](https://github.com/romanbican/roles/blob/master/src/Bican/Roles/Contracts/HasRoleAndPermission.php) contract.
 
 ## License
 
