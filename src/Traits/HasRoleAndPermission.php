@@ -41,7 +41,7 @@ trait HasRoleAndPermission
      */
     public function getRoles()
     {
-        return (!$this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
+        return $this->roles()->get();
     }
 
     /**
