@@ -38,7 +38,7 @@ Pull this package in through Composer (file `composer.json`).
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "~5.3.0",
-        "geniusts/roles": "^3.0.1"
+        "geniusts/roles": "^3.0.2"
     }
 }
 ```
