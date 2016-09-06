@@ -113,7 +113,7 @@ trait HasRoleAndPermission
     {
         return $this->getRoles()->contains(function ($model, $key) use ($role)
         {
-            return $role == $model->slug || Str::is($role, $model->slug);
+            return $role == $model->id || Str::is($role, $model->slug);
         });
     }
 
