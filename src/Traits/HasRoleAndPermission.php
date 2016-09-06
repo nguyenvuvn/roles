@@ -41,7 +41,7 @@ trait HasRoleAndPermission
      */
     public function getRoles()
     {
-        return $this->roles()->get();
+        return (!$this->roles) ? $this->roles = $this->roles()->get() : $this->roles;
     }
 
     /**
@@ -126,7 +126,14 @@ trait HasRoleAndPermission
      */
     public function attachRole($role)
     {
-        return (!$this->getRoles()->contains($role)) ? $this->roles()->attach($role) : true;
+        if (!$this->getRoles()->contains($role))
+        {
+            $this->roles()->attach($role);
+
+            return $this->roles = null;
+        }
+
+        return true;
     }
 
     /**
@@ -343,7 +350,14 @@ trait HasRoleAndPermission
      */
     public function attachPermission($permission)
     {
-        return (!$this->getPermissions()->contains($permission)) ? $this->userPermissions()->attach($permission) : true;
+        if (!$this->getPermissions()->contains($permission))
+        {
+            $this->userPermissions()->attach($permission);
+
+            return $this->permissions = null;
+        }
+
+        return true;
     }
 
     /**
