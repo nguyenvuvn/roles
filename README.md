@@ -1,15 +1,15 @@
 # Roles And Permissions For Laravel 5.3
 
-It is a fork from [bican/roles](https://github.com/romanbican/roles) package,  
-I made some changes to make it work with laravel 5.3
+Đây là package được sử dụng từ [bican/roles](https://github.com/romanbican/roles),  
+Có một số thay đổi để làm việc với Laravel 5.3
 
 
-- [Installation](#installation)
+- [Cài đặt](#installation)
     - [Composer](#composer)
     - [Service Provider](#service-provider)
     - [Config File And Migrations](#config-file-and-migrations)
     - [HasRoleAndPermission Trait And Contract](#hasroleandpermission-trait-and-contract)
-- [Usage](#usage)
+- [Sử dụng](#usage)
     - [Creating Roles](#creating-roles)
     - [Attaching And Detaching Roles](#attaching-and-detaching-roles)
     - [Checking For Roles](#checking-for-roles)
@@ -21,17 +21,17 @@ I made some changes to make it work with laravel 5.3
     - [Entity Check](#entity-check)
     - [Blade Extensions](#blade-extensions)
     - [Middleware](#middleware)
-- [Config File](#config-file)
-- [More Information](#more-information)
-- [License](#license)
+- [Cấu hình tập tin](#config-file)
+- [Thông tin khác](#more-information)
+- [Bản quyền](#license)
 
-## Installation
+## Cài đặt
 
-This package is very easy to set up. There are only couple of steps.
+Package này dể dàng cài đặt, chỉ cần vài bước.
 
 ### Composer
 
-Pull this package in through Composer (file `composer.json`).
+Đưa nội dung vào tập tin Composer.json (file `composer.json`).
 
 ```js
 {
@@ -43,13 +43,7 @@ Pull this package in through Composer (file `composer.json`).
 }
 ```
 
-> If you are still using Laravel 5.0, you must pull in version `1.7.*`.
-
-> and for Laravel 5.2, you must pull in version `2.1.*`.
-
-Run this command inside your terminal.
-
-    composer update
+Thực thi lệnh:    composer update
 
 ### Service Provider
 
