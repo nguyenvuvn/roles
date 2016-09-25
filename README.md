@@ -1,6 +1,6 @@
 # Roles And Permissions For Laravel 5.3
 
-Đây là package được sử dụng từ [bican/roles](https://github.com/romanbican/roles),  
+Đây là package được sử dụng từ [GeniusTS/roles](https://github.com/GeniusTS/roles),  
 Có một số thay đổi để làm việc với Laravel 5.3
 
 
